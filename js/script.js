@@ -8,6 +8,10 @@ let allImages = ["bobrossparrot", "bobrossparrot",
 
 let usedImages = [];
 
+let playCounter = 0;
+
+let backedCounter = 0;
+
 let element = document.querySelector(".cards");
 
 let cardNumber = 1;
@@ -23,9 +27,9 @@ usedImages.sort(randomGenerator);
 
 for (let index = 0; index < usedImages.length; index++) {
     element.innerHTML = element.innerHTML + `  
-                            <div class="card ${usedImages[index]}">
+                            <div class="card ${usedImages[index]}" onClick="flipCard(this);">
 
-                                <div class="font-face face">
+                                <div class="front-face face">
                                     <img class="imgfront" src="images/front.png">
                                 </div>
                                 <div class="back-face face">
@@ -34,6 +38,13 @@ for (let index = 0; index < usedImages.length; index++) {
 
                             </div>
                             `
+}
+
+function flipCard(clickedCard) {
+    clickedCard.querySelector(".front-face").classList.add("front-face-clicked");
+    clickedCard.querySelector(".back-face").classList.remove("back-face");
+    clickedCard.querySelector("div:nth-child(2)").classList.add("back-face-clicked");
+
 }
 
 function randomGenerator() {
