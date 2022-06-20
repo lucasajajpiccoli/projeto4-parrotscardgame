@@ -1,3 +1,5 @@
+let element = document.querySelector(".cards");
+
 let allImages = ["bobrossparrot", "bobrossparrot",
     "explodyparrot", "explodyparrot",
     "fiestaparrot", "fiestaparrot",
@@ -12,13 +14,12 @@ let playCounter = 0;
 
 let backedCounter = 0;
 
-let element = document.querySelector(".cards");
+let cardNumber = 1;
 
 let clickedCard;
 
 let firstFlippedCard;
 
-let cardNumber = 1;
 while (cardNumber % 2 !== 0 || cardNumber > 14 || cardNumber < 4) {
     cardNumber = Number(prompt("Com quantas cartas deseja jogar?"));
 }
@@ -44,8 +45,8 @@ for (let index = 0; index < usedImages.length; index++) {
                             `
 }
 
-function flipCard(element) {
-    clickedCard = element;
+function flipCard(clickedElement) {
+    clickedCard = clickedElement;
 
     clickedCard.classList.add("flipped")
     clickedCard.querySelector(".front-face").classList.add("front-face-clicked");
@@ -91,6 +92,4 @@ function unflipCard() {
     clickedCard.querySelector(".front-face").classList.remove("front-face-clicked");
     clickedCard.querySelector(".back-face-clicked").classList.remove("back-face-clicked");
     clickedCard.querySelector("div:nth-child(2)").classList.add("back-face");
-
-    console.log(25);
 }
